@@ -17,13 +17,16 @@ struct LandmarkRow: View {
                     .frame(width: 50, height: 50)
                     .padding(5)
                 Text(landmark.name)
-                    .font(.title)
                 Spacer()
             }
         }
     }
 }
 
-#Preview {
-    LandmarkRow(landmark: landmarks[1])
+#Preview("Turtle Rock") {
+    Group {
+        LandmarkRow(landmark: landmarks[0])
+        LandmarkRow(landmark: landmarks[1])
+    }
 }
+
