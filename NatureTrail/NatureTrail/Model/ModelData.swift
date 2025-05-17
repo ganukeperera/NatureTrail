@@ -7,26 +7,41 @@
 
 import Foundation
 
-let landmarks: [Landmark] = load(fileName: "landmarkData.json")
-
-func load<T: Decodable>(fileName: String) -> T {
-    let data: Data
+@Observable
+class ModelData {
+    var landmarks: [Landmark] = load(fileName: "landmarkData.json")
     
-    guard let file = Bundle.main.url(forResource: fileName, withExtension: nil)
-    else {
-        fatalError("Couldn't find the \(fileName) in main bundle")
+    var features: [Landmark] {
+        landmarks.filter { $0.isFeatured }
     }
     
-    do {
-        data = try Data(contentsOf: file)
-    } catch {
-        fatalError("Couldn't load data from \(file). Error: \(error)")
+    var categories: [String: [Landmark]] {
+        Dictionary(grouping: landmarks) {
+            $0.category.rawValue
+        }
     }
     
-    do {
-        return try JSONDecoder().decode(T.self, from: data)
-    } catch {
-        fatalError("Couldn't parse \(fileName) as \(T.self). Error: \(error)")
+    static func load<T: Decodable>(fileName: String) -> T {
+        let data: Data
+        
+        guard let file = Bundle.main.url(forResource: fileName, withExtension: nil)
+        else {
+            fatalError("Couldn't find the \(fileName) in main bundle")
+        }
+        
+        do {
+            data = try Data(contentsOf: file)
+        } catch {
+            fatalError("Couldn't load data from \(file). Error: \(error)")
+        }
+        
+        do {
+            return try JSONDecoder().decode(T.self, from: data)
+        } catch {
+            fatalError("Couldn't parse \(fileName) as \(T.self). Error: \(error)")
+        }
+        
     }
-    
 }
+
+

@@ -18,15 +18,20 @@ struct LandmarkRow: View {
                     .padding(5)
                 Text(landmark.name)
                 Spacer()
+                if landmark.isFavorite {
+                    Image(systemName: "star.fill")
+                        .foregroundStyle(.yellow)
+                }
             }
         }
     }
 }
 
 #Preview("Turtle Rock") {
+    let modelData = ModelData()
     Group {
-        LandmarkRow(landmark: landmarks[0])
-        LandmarkRow(landmark: landmarks[1])
+        LandmarkRow(landmark: modelData.landmarks[0])
+        LandmarkRow(landmark: modelData.landmarks[1])
     }
 }
 
