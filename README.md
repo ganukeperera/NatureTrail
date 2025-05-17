@@ -7,15 +7,15 @@
   </p>
 
 <p align="row">
-<img src= "images/animation.gif" width="200" >
+<img src= "images/1.gif" width="200" >
 </p>
 
-## General Information
+##	General Information
 
 This app has been developed to demonstrate the skills of architecting a modern SwiftUI application by adopting the latest data modeling, data binding, and navigation techniques, ensuring efficient and scalable code. 
 
 
-## Features
+##	Features
 
 - Detailed descriptions of rivers, mountains, and lakes in the US.
 
@@ -30,7 +30,7 @@ This app has been developed to demonstrate the skills of architecting a modern S
 - Bookmark and favorite your top destinations.
 
 
-## Technologies Used
+##	Technologies Used
 
 - Swift - Core iOS app development
 
